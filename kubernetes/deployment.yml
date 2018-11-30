@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-flask
+spec:
+  selector:
+    matchLabels:
+      app: sample-flask
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: sample-flask
+    spec:
+      containers:
+        - name: sample-flask
+          image: us.gcr.io/rollbar-dev/sample-flask:v2
+          ports:
+            - containerPort: 5000
